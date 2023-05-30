@@ -6,15 +6,17 @@ from collections import Counter
 import re
 
 def build_id2title_dictionary(catalog):
+    # builds dictionary from id-title pairs in the catalog
     return dict(zip(catalog['id'], catalog['title']))
 
 def get_elements_from_keys(mapping_dictionary, key_list):
     """ get a list of entries using a dictionary and a key list """
-    
     elements = [mapping_dictionary.get(key) for key in key_list]
     return elements
 
 def calculate_bleu(predicted_titles, target_titles):
+    """calculates bleu given 2 lists of strings"""
+    
     # create a corpus
     wrapped_target_titles = [[tt] for tt in target_titles]
     print('target titles are now ready for the bleu')
@@ -25,13 +27,16 @@ def calculate_bleu(predicted_titles, target_titles):
     
     
 def get_titles(ids, catalog):
+    """get list of titles from a list of ids"""
+    
     # building mapping dictionaries
     id2title_dictionary = build_id2title_dictionary(catalog)
     
     # create predicted titles
     titles = get_elements_from_keys(id2title_dictionary, ids)
-    
     return titles
+
+## The code below is for testing purposes ##
 
 ## CATALOG PART ##
 def _init_catalog():
