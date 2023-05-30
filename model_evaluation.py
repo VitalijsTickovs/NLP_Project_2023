@@ -44,7 +44,6 @@ def _init_catalog():
                 new_text.append(word)
         text = new_text
         text = " ".join(text)
-        
         return text
 
     products = pd.read_csv('products_train.csv')
@@ -68,10 +67,8 @@ def _init_catalog():
 ## TRAIN/TEST SESSIONS ##
 def _init_sessions(n=None):
     def clean_items(text):
-
         text = text[1:-1]
         text = re.findall(r"'([^']*)'", text)
-
         return text
     
     test_sessions = pd.read_csv('test_sessions.csv')
